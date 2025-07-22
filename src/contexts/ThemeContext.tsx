@@ -30,16 +30,38 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
     });
   };
 
-  useEffect(() => {
-    // Apply theme to document
-    document.documentElement.setAttribute("data-theme", theme);
+  // useEffect(() => {
+  //   // Apply theme to document
+  //   document.documentElement.setAttribute("data-theme", theme);
 
-    // Also update the class for compatibility
+  //   // Also update the class for compatibility
+  //   if (theme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //   } else {
+  //     document.documentElement.classList.remove("dark");
+  //   }
+  // }, [theme]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    // Add transition for smooth change
+    root.style.transition = "background-color 0.3s ease, color 0.3s ease";
+
+    // Apply theme
+    root.setAttribute("data-theme", theme);
+    root.style.colorScheme = theme;
+
     if (theme === "dark") {
-      document.documentElement.classList.add("dark");
+      root.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("dark");
+      root.classList.remove("dark");
     }
+
+    // Remove transition after a delay
+    setTimeout(() => {
+      root.style.transition = "";
+    }, 300);
   }, [theme]);
 
   return (

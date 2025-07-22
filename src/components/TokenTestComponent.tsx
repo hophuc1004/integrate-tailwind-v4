@@ -23,10 +23,10 @@ export const TokenTestComponent: React.FC = () => {
           <div className="bg-bg-accent-success-rest p-4 rounded">
             <span className="text-fg-white">Success</span>
           </div>
-          <div className="bg-bg-accent-warning-rest p-4 rounded">
+          <div className="bg-neutral-500 p-4 rounded">
             <span className="text-fg-white">Warning</span>
           </div>
-          <div className="bg-bg-accent-error-rest p-4 rounded">
+          <div className="bg-bg-redTo p-4 rounded">
             <span className="text-fg-white">Error</span>
           </div>
           <div className="bg-bg-accent-info-rest p-4 rounded">
