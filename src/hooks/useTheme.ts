@@ -13,10 +13,8 @@ export const useSimpleTheme = () => {
       if (savedTheme && (savedTheme === "light" || savedTheme === "dark")) {
         return savedTheme;
       }
-      // Fall back to system preference
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
+      // Default to light theme instead of checking system preference
+      return "light";
     }
     return "light";
   });
@@ -58,10 +56,13 @@ export const useSimpleTheme = () => {
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    const handleChange = (e: MediaQueryListEvent) => {
+    const handleChange = () => {
       // Only update if no theme is saved in localStorage
+      // This preserves the default light theme behavior
       if (!localStorage.getItem("theme")) {
-        setTheme(e.matches ? "dark" : "light");
+        // Still default to light even when system preference changes
+        // Users can manually toggle if they want dark mode
+        return;
       }
     };
 
