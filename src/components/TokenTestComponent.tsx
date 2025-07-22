@@ -26,7 +26,7 @@ export const TokenTestComponent: React.FC = () => {
           <div className="bg-neutral-500 p-4 rounded">
             <span className="text-fg-white">Warning</span>
           </div>
-          <div className="bg-bg-redTo p-4 rounded">
+          <div className="bg-bg-red p-4 rounded">
             <span className="text-fg-white">Error</span>
           </div>
           <div className="bg-bg-accent-info-rest p-4 rounded">
